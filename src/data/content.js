@@ -7,7 +7,7 @@ export const GAMES = [
 export const LINKS = [
   { name: "industrialized", icon: "discord", bg: "#5865F2" },
   { name: "imafancycrab", desc: "View my Roblox profile.", icon: "roblox", href: "https://www.roblox.com/users/193908756/profile", bg: "#e8212a" },
-  { name: "imafancycrab", desc: "Explore my GitHub projects.", icon: "github", href: "#", bg: "#333" }
+  { name: "imafancycrab", desc: "Explore my GitHub projects.", icon: "github", href: "https://github.com/imafancycrab", bg: "#333" }
 ];
 
 export const PORTFOLIO_ITEMS = [
@@ -24,5 +24,5 @@ export const PORTFOLIO_ITEMS = [
 export const PROJECTS = [
   { name: "Dagens-Datum", desc: "A site that shows the current date and a bunch of extra information.", tag: "js", stars: 42, forks: 8, updated: "3 days ago", href: "https://github.com/imafancycrab/Dagens-Datum" },
   { name: "vbucks-clicker", desc: "A simple clicker game for earning virtual currency.", tag: "js", stars: 17, forks: 3, updated: "1 week ago", href: "https://github.com/imafancycrab/vbucks-clicker#" },
-  { name: "industry-site", desc: "Source for this portfolio site. Built with React and Framer Motion.", tag: "js", stars: 9, forks: 2, updated: "today", href: "#" },
+  { name: "industry-site", desc: "Source for this portfolio site. Built with React and Framer Motion.", tag: "js", stars: 9, forks: 2, updated: "today", href: "https://github.com/imafancycrab/industry-portfolio" },
 ];
