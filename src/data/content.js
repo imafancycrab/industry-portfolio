@@ -24,5 +24,5 @@ export const PORTFOLIO_ITEMS = [
 export const PROJECTS = [
   { name: "Dagens-Datum", desc: "A site that shows the current date and a bunch of extra information.", tag: "js", stars: 42, forks: 8, updated: "3 days ago", href: "https://github.com/imafancycrab/Dagens-Datum" },
   { name: "vbucks-clicker", desc: "A simple clicker game for earning virtual currency.", tag: "js", stars: 17, forks: 3, updated: "1 week ago", href: "https://github.com/imafancycrab/vbucks-clicker#" },
-  { name: "industry-site", desc: "Source for this portfolio site. Built with React and Framer Motion.", tag: "js", stars: 9, forks: 2, updated: "today", href: "https://github.com/imafancycrab/industry-portfolio" },
+  { name: "industry-portfolio", desc: "Source for this portfolio site. Built with React and Framer Motion.", tag: "js", stars: 9, forks: 2, updated: "today", href: "https://github.com/imafancycrab/industry-portfolio" },
 ];
