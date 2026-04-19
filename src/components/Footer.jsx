@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <span className="nav-logo">
+      <Link to="/" className="nav-logo">
         industry<span className="grad-dot">.</span>
-      </span>
+      </Link>
       <span>2026 industry. sorted with care.</span>
     </footer>
   );
