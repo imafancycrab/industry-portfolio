@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { PORTFOLIO_ITEMS } from '../data/content';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 function formatVisits(num) {
   if (num >= 1_000_000_000) return `${(num / 1_000_000_000).toFixed(1).replace(/\.0$/, '')}b+`;
@@ -18,6 +19,12 @@ function extractPlaceIds(items) {
     })
     .filter(Boolean);
 }
+
+const NAV_LINKS = [
+  { path: '/', label: 'home' },
+  { path: '/portfolio', label: 'portfolio' },
+  { path: '/projects', label: 'projects' },
+];
 
 export default function Navbar() {
   const [dark, setDark] = useState(() => localStorage.getItem('dark') === '1');
@@ -72,15 +79,28 @@ export default function Navbar() {
 
       <div className="nav-inner">
         <div className="nav-pills" aria-label="Primary navigation">
-          <NavLink to="/" className={({ isActive }) => `nav-pill ${isActive ? 'active' : ''}`}>
-            home<span className="grad-dot">.</span>
-          </NavLink>
-          <NavLink to="/portfolio" className={({ isActive }) => `nav-pill ${isActive ? 'active' : ''}`}>
-            portfolio<span className="grad-dot">.</span>
-          </NavLink>
-          <NavLink to="/projects" className={({ isActive }) => `nav-pill ${isActive ? 'active' : ''}`}>
-            projects<span className="grad-dot">.</span>
-          </NavLink>
+          {NAV_LINKS.map(link => (
+            <NavLink
+              key={link.path}
+              to={link.path}
+              className={({ isActive }) => `nav-pill ${isActive ? 'active' : ''}`}
+            >
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavPill"
+                      className="nav-pill-bg"
+                      transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                    />
+                  )}
+                  <span className="nav-pill-text">
+                    {link.label}<span className="grad-dot">.</span>
+                  </span>
+                </>
+              )}
+            </NavLink>
+          ))}
         </div>
       </div>
 
