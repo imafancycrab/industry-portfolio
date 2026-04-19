@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { PORTFOLIO_ITEMS } from '../data/content';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 function formatVisits(num) {
   if (num >= 1_000_000_000) return `${(num / 1_000_000_000).toFixed(1).replace(/\.0$/, '')}b+`;
@@ -72,7 +73,7 @@ export default function Navbar() {
       <div className="nav-inner">
         <div className="nav-pills" aria-label="Primary navigation">
           <NavLink to="/" className={({ isActive }) => `nav-pill ${isActive ? 'active' : ''}`}>
-            home
+            home<span className="grad-dot">.</span>
           </NavLink>
           <NavLink to="/portfolio" className={({ isActive }) => `nav-pill ${isActive ? 'active' : ''}`}>
             portfolio<span className="grad-dot">.</span>
@@ -95,9 +96,7 @@ export default function Navbar() {
           onClick={() => setDark((v) => !v)}
           aria-label="Toggle dark mode"
         >
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <path d="M6 .278a.77.77 0 0 1 .08.858A7.2 7.2 0 0 0 5.12 9.02a7.2 7.2 0 0 0 7.84 1.468.77.77 0 0 1 .86.09.78.78 0 0 1 .08.87A8.48 8.48 0 0 1 8 16a8.4 8.4 0 0 1-5.992-2.498 8.42 8.42 0 0 1-2.43-5.864 8.43 8.43 0 0 1 4.158-7.252.76.76 0 0 1 .264-.108z" />
-          </svg>
+          {dark ? <FiSun size={15} /> : <FiMoon size={15} />}
         </button>
       </div>
     </nav>

@@ -188,6 +188,13 @@ nav.site-nav .nav-logo {
   filter: saturate(1.15) brightness(1.05);
 }
 
+.nav-pill .grad-dot {
+  font-size: 2.1em;
+  line-height: 1;
+  position: relative;
+  top: -0.19em;
+}
+
 .nav-right {
   position: absolute;
   right: 18px;
