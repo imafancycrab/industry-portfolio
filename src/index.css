@@ -110,6 +110,11 @@ nav.site-nav {
   display: flex;
   align-items: center;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  pointer-events: none;
+}
+
+nav.site-nav > * {
+  pointer-events: auto;
 }
 
 .nav-inner {
@@ -554,6 +559,11 @@ footer.site-footer {
   background: var(--bg);
   z-index: 100;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  pointer-events: none;
+}
+
+footer.site-footer > * {
+  pointer-events: auto;
 }
 
 footer.site-footer .nav-logo {
