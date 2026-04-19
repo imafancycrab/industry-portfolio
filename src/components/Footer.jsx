@@ -6,7 +6,7 @@ export default function Footer() {
       <Link to="/" className="nav-logo">
         industry<span className="grad-dot">.</span>
       </Link>
-      <span>2026 industry. sorted with care.</span>
+      <span>2026 industry. made with care.</span>
     </footer>
   );
 }

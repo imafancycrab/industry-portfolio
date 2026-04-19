@@ -171,21 +171,32 @@ nav.site-nav .nav-logo {
   border-radius: 999px;
   border: none;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: color 0.15s ease;
   background: transparent;
   color: var(--text-muted);
   display: inline-flex;
   align-items: center;
   letter-spacing: -0.01em;
+  position: relative;
 }
 
 .nav-pill.active {
-  background: var(--nav-pill-active);
   color: var(--nav-pill-active-text);
 }
 
-.nav-pill.active .grad-dot {
-  filter: saturate(1.15) brightness(1.05);
+.nav-pill-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--nav-pill-active);
+  z-index: 0;
+}
+
+.nav-pill-text {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav-pill .grad-dot {
