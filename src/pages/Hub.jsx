@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { GAMES, LINKS } from '../data/content';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 import { SiRoblox } from 'react-icons/si';
+import Tilt from 'react-parallax-tilt';
 
 // This dictates how the page enters and leaves
 const pageTransition = {
@@ -34,31 +35,39 @@ export default function Hub() {
             {GAMES.map((g) => {
               const hasLink = Boolean(g.link && g.link !== '#');
               return (
-                <a
+                <Tilt
                   key={g.name}
-                  className="game-card"
-                  href={g.link || '#'}
-                  target={hasLink ? '_blank' : undefined}
-                  rel={hasLink ? 'noreferrer' : undefined}
+                  tiltMaxAngleX={5}
+                  tiltMaxAngleY={5}
+                  scale={1.01}
+                  transitionSpeed={2000}
+                  style={{ display: 'block' }}
                 >
-                  {g.thumb ? (
-                    <img className="game-thumb" src={g.thumb} alt={g.name} loading="lazy" />
-                  ) : (
-                    <div className="game-thumb-placeholder">{g.name}</div>
-                  )}
-                  <div className="game-info">
-                    {g.icon ? (
-                      <img className="game-icon" src={g.icon} alt="" loading="lazy" />
+                  <a
+                    className="game-card"
+                    href={g.link || '#'}
+                    target={hasLink ? '_blank' : undefined}
+                    rel={hasLink ? 'noreferrer' : undefined}
+                  >
+                    {g.thumb ? (
+                      <img className="game-thumb" src={g.thumb} alt={g.name} loading="lazy" />
                     ) : (
-                      <div className="game-icon-placeholder">{g.name.slice(0, 2).toUpperCase()}</div>
+                      <div className="game-thumb-placeholder">{g.name}</div>
                     )}
-                    <div className="game-meta">
-                      <div className="game-name">{g.name}</div>
-                      <div className="game-desc">{g.desc}</div>
+                    <div className="game-info">
+                      {g.icon ? (
+                        <img className="game-icon" src={g.icon} alt="" loading="lazy" />
+                      ) : (
+                        <div className="game-icon-placeholder">{g.name.slice(0, 2).toUpperCase()}</div>
+                      )}
+                      <div className="game-meta">
+                        <div className="game-name">{g.name}</div>
+                        <div className="game-desc">{g.desc}</div>
+                      </div>
+                      <span className={`game-badge ${badgeClass.translated}`}>{badgeLabel.translated}</span>
                     </div>
-                    <span className={`game-badge ${badgeClass.translated}`}>{badgeLabel.translated}</span>
-                  </div>
-                </a>
+                  </a>
+                </Tilt>
               );
             })}
           </div>
@@ -68,21 +77,30 @@ export default function Hub() {
           <p className="section-label">Where Else</p>
           <div className="links-grid">
             {LINKS.map((l) => (
-              <a key={l.name + l.icon} className="link-card" href={l.href || '#'} target="_blank" rel="noreferrer">
-                {(() => {
-                  const Icon = ICONS[l.icon];
-                  return (
-                <div
-                  className="link-icon"
-                  style={{ background: l.bg || ICON_BG[l.icon] || '#888', color: '#fff' }}
-                  aria-hidden="true"
-                >
-                  {Icon ? <Icon size={20} /> : null}
-                </div>
-                  );
-                })()}
-                <div className="link-name">{l.name}</div>
-              </a>
+              <Tilt
+                key={l.name + l.icon}
+                tiltMaxAngleX={8}
+                tiltMaxAngleY={8}
+                scale={1.02}
+                transitionSpeed={2000}
+                style={{ display: 'block' }}
+              >
+                <a className="link-card" href={l.href || '#'} target="_blank" rel="noreferrer">
+                  {(() => {
+                    const Icon = ICONS[l.icon];
+                    return (
+                      <div
+                        className="link-icon"
+                        style={{ background: l.bg || ICON_BG[l.icon] || '#888', color: '#fff' }}
+                        aria-hidden="true"
+                      >
+                        {Icon ? <Icon size={20} /> : null}
+                      </div>
+                    );
+                  })()}
+                  <div className="link-name">{l.name}</div>
+                </a>
+              </Tilt>
             ))}
           </div>
         </div>
