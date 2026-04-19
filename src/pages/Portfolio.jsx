@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { PORTFOLIO_ITEMS } from '../data/content';
+import Tilt from 'react-parallax-tilt';
 
 const pageTransition = {
   initial: { opacity: 0, y: 15 },
@@ -24,35 +25,44 @@ export default function Portfolio() {
           {PORTFOLIO_ITEMS.map((p) => {
             const hasLink = Boolean(p.href && p.href !== '#');
             return (
-              <a
+              <Tilt
                 key={p.name + p.statusLabel}
-                className="portfolio-card"
-                href={p.href || '#'}
-                target={hasLink ? '_blank' : undefined}
-                rel={hasLink ? 'noreferrer' : undefined}
+                tiltMaxAngleX={5}
+                tiltMaxAngleY={5}
+                scale={1.01}
+                transitionSpeed={2000}
+                style={{ display: 'flex' }}
+                className="portfolio-card-wrapper"
               >
-                {p.thumb ? (
-                  <img
-                    className="game-thumb"
-                    style={{ borderRadius: 0 }}
-                    src={p.thumb}
-                    alt={p.name}
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="portfolio-thumb" style={{ background: p.thumbBg }}>
-                    {p.thumbLabel}
+                <a
+                  className="portfolio-card"
+                  href={p.href || '#'}
+                  target={hasLink ? '_blank' : undefined}
+                  rel={hasLink ? 'noreferrer' : undefined}
+                >
+                  {p.thumb ? (
+                    <img
+                      className="game-thumb"
+                      style={{ borderRadius: 0 }}
+                      src={p.thumb}
+                      alt={p.name}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="portfolio-thumb" style={{ background: p.thumbBg }}>
+                      {p.thumbLabel}
+                    </div>
+                  )}
+                  <div className="portfolio-body">
+                    <div className="portfolio-name">{p.name}</div>
+                    <div className="portfolio-status">
+                      <span className={`status-dot ${dotClass[p.status] || 'dot-ongoing'}`} aria-hidden="true" />
+                      {p.statusLabel}
+                    </div>
+                    <div className="portfolio-desc">{p.desc}</div>
                   </div>
-                )}
-                <div className="portfolio-body">
-                  <div className="portfolio-name">{p.name}</div>
-                  <div className="portfolio-status">
-                    <span className={`status-dot ${dotClass[p.status] || 'dot-ongoing'}`} aria-hidden="true" />
-                    {p.statusLabel}
-                  </div>
-                  <div className="portfolio-desc">{p.desc}</div>
-                </div>
-              </a>
+                </a>
+              </Tilt>
             );
           })}
         </div>
