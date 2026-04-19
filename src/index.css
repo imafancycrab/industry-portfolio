@@ -398,7 +398,7 @@ nav.site-nav .nav-logo {
   transition: transform 0.18s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   width: 240px;
 }
-.link-card:hover {
+a.link-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-hover);
 }

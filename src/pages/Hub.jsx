@@ -76,32 +76,43 @@ export default function Hub() {
         <div>
           <p className="section-label">Where Else</p>
           <div className="links-grid">
-            {LINKS.map((l) => (
-              <Tilt
-                key={l.name + l.icon}
-                tiltMaxAngleX={8}
-                tiltMaxAngleY={8}
-                scale={1.02}
-                transitionSpeed={2000}
-                style={{ display: 'block' }}
-              >
-                <a className="link-card" href={l.href || '#'} target="_blank" rel="noreferrer">
-                  {(() => {
-                    const Icon = ICONS[l.icon];
-                    return (
-                      <div
-                        className="link-icon"
-                        style={{ background: l.bg || ICON_BG[l.icon] || '#888', color: '#fff' }}
-                        aria-hidden="true"
-                      >
-                        {Icon ? <Icon size={20} /> : null}
-                      </div>
-                    );
-                  })()}
-                  <div className="link-name">{l.name}</div>
-                </a>
-              </Tilt>
-            ))}
+            {LINKS.map((l) => {
+              const isStatic = !l.href;
+              const CardComponent = isStatic ? 'div' : 'a';
+              return (
+                <Tilt
+                  key={l.name + l.icon}
+                  tiltMaxAngleX={8}
+                  tiltMaxAngleY={8}
+                  scale={isStatic ? 1 : 1.02}
+                  transitionSpeed={2000}
+                  style={{ display: 'block' }}
+                  tiltEnable={!isStatic}
+                >
+                  <CardComponent 
+                    className="link-card" 
+                    href={isStatic ? undefined : l.href} 
+                    target={isStatic ? undefined : "_blank"} 
+                    rel={isStatic ? undefined : "noreferrer"}
+                    style={isStatic ? { cursor: 'default' } : undefined}
+                  >
+                    {(() => {
+                      const Icon = ICONS[l.icon];
+                      return (
+                        <div
+                          className="link-icon"
+                          style={{ background: l.bg || ICON_BG[l.icon] || '#888', color: '#fff' }}
+                          aria-hidden="true"
+                        >
+                          {Icon ? <Icon size={20} /> : null}
+                        </div>
+                      );
+                    })()}
+                    <div className="link-name">{l.name}</div>
+                  </CardComponent>
+                </Tilt>
+              );
+            })}
           </div>
         </div>
       </div>
